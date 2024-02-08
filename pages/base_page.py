@@ -50,5 +50,9 @@ class BasePage:
         pass
     
     # READING
-    def get_visible_text(self):
-        pass
+    def get_visible_text(self, locator: tuple) -> str:
+        try:
+            return self.browser.find_element(*locator).text
+        except:
+            raise AssertionError(f"Failed to get text from element: {locator}")
+            
