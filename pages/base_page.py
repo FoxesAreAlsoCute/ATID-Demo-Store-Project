@@ -40,8 +40,11 @@ class BasePage:
         return not self.element_is_visible(locator, waiting)
     
     # CLICKS
-    def click_element(self):
-        pass
+    def click_element(self, locator: tuple):
+        try:
+            self.browser.find_element(*locator).click()
+        except:
+            raise AssertionError(f"Failed to click element: {locator}")
     
     def click_after_scroll(self):
         pass
