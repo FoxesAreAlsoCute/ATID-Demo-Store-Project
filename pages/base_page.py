@@ -43,7 +43,8 @@ class BasePage:
     def click_element(self, locator: tuple):
         try:
             self.browser.find_element(*locator).click()
-        except:
+        except Exception as e:
+            print(e)
             raise AssertionError(f"Failed to click element: {locator}")
     
     def click_after_scroll(self):
